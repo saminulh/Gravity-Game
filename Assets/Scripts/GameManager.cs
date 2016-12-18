@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static bool mouseOccupied = false;
 
     public static bool isLaunched = false;
-    public static float timeStep = 0.05f;
+    public static float timeStep = 0.01f;
     public static Planet selectedPlanet;
     public static GameObject planetManipulationCanvas, launchCanvas, resetCanvas;
 

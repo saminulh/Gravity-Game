@@ -46,12 +46,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CameraPanning.cs" />
-     <Compile Include="Assets\GameManager.cs" />
-     <Compile Include="Assets\MouseOccupiedDetector.cs" />
-     <Compile Include="Assets\OnCollision.cs" />
-     <Compile Include="Assets\Planet.cs" />
-     <Compile Include="Assets\Rocket.cs" />
+     <Compile Include="Assets\Scripts\CameraPanning.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\MouseOccupiedDetector.cs" />
+     <Compile Include="Assets\Scripts\OnCollision.cs" />
+     <Compile Include="Assets\Scripts\Planet.cs" />
+     <Compile Include="Assets\Scripts\Rocket.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

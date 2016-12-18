@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraPanning : MonoBehaviour {
     GameObject rocketGO;
-    public float heightOffset = -40, verticalPadding = 3;
+    public float heightOffset = -100, verticalPadding = 30;
     public string bottomObject = "Rocket", topObject = "End Planet";
     float lowerY, upperY;
 
@@ -26,6 +26,7 @@ public class CameraPanning : MonoBehaviour {
         rocketGO = GameObject.Find("Rocket");
         lowerY = GameObject.Find(bottomObject).transform.position.y + verticalPadding;
         upperY = Mathf.Max(GameObject.Find(topObject).transform.position.y - verticalPadding,lowerY);
+        Debug.Log(lowerY);
         setToPosition(0, lowerY);
 	}
 
@@ -45,7 +46,7 @@ public class CameraPanning : MonoBehaviour {
                 if (Input.GetMouseButton(0) && panning)
                 {
                     //Debug.Log(Input.mousePosition);
-                    Vector3 delta = 0.03f * (mousePosition - Input.mousePosition), curPosition = gameObject.transform.position;
+                    Vector3 delta = 0.3f * (mousePosition - Input.mousePosition), curPosition = gameObject.transform.position;
                     float xMultiplier = 1 / (1 + Mathf.Abs(curPosition.x)), yMultiplier;
 
                     if (curPosition.y < lowerY) yMultiplier = 1 / (1 + lowerY - curPosition.y);
@@ -66,17 +67,17 @@ public class CameraPanning : MonoBehaviour {
                 {
                     int sign = (gameObject.transform.position.x == Mathf.Abs(gameObject.transform.position.x)) ? -1 : 1;
                     movePosition(sign * Mathf.Min(Mathf.Abs(gameObject.transform.position.x),
-                        2 / (1 + Mathf.Abs(gameObject.transform.position.x))), 0);
+                        20 / (1 + Mathf.Abs(gameObject.transform.position.x))), 0);
                 }
                 if (gameObject.transform.position.y < lowerY)
                 {
                     movePosition(0, Mathf.Min(lowerY - gameObject.transform.position.y,
-                        2 / (1 + lowerY - gameObject.transform.position.y)));
+                        20 / (1 + lowerY - gameObject.transform.position.y)));
                 }
                 else if (gameObject.transform.position.y > upperY)
                 {
                     movePosition(0, Mathf.Max(upperY - gameObject.transform.position.y,
-                        -2 / (1 + gameObject.transform.position.y - upperY)));
+                        -20 / (1 + gameObject.transform.position.y - upperY)));
                 }
             }
         }
