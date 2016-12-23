@@ -5,11 +5,9 @@ using UnityEngine;
 public class Planet : MonoBehaviour
 {
     Vector3 position;
-    float defaultRadius, radius, lowerSize, upperSize, mass;
+    float defaultRadius, radius, lowerSize, upperSize, density, mass;
     public float lowerSizePercentage = 0.25f, upperSizePercentage = 5;
     bool planetChanged;
-    
-    static float massMultiplier = 1;
     public bool endPlanet = false;
 
     void OnMouseUp()
@@ -24,7 +22,7 @@ public class Planet : MonoBehaviour
     public void setRadiusAndMass(float r)
     {
         radius = r;
-        mass = massMultiplier * 4 / 3 * Mathf.PI * Mathf.Pow(radius, 3);
+        mass = density * 4 / 3 * Mathf.PI * Mathf.Pow(radius, 3);
         planetChanged = true;
     }
 
@@ -64,6 +62,7 @@ public class Planet : MonoBehaviour
         lowerSize = lowerSizePercentage * defaultRadius;
         upperSize = upperSizePercentage * defaultRadius;
         radius = defaultRadius;
+        density = GameObject.Find("Game Manager").GetComponent<GameManager>().density;
         setRadiusAndMass(defaultRadius);
         position = gameObject.transform.position;
         planetChanged = false;

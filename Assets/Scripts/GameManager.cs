@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public static Planet selectedPlanet;
     public static GameObject planetManipulationCanvas, launchCanvas, resetCanvas;
 
+    public float density = 1;
+
     public static Vector3 findAcceleration()
     {
         Rocket rocket = GameObject.Find("Rocket").GetComponent<Rocket>();
