@@ -5,9 +5,8 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     Vector3 position, acceleration, startPosition, velocity;
-    public Vector3 startVelocity;
+    public Vector3 startVelocity, up;
     float mass;
-    Quaternion baseRotation;
 
     public Vector3 getPosition()
     {
@@ -24,6 +23,7 @@ public class Rocket : MonoBehaviour
         position = startPosition;
         gameObject.transform.position = position;
         velocity = startVelocity;
+        acceleration = Vector3.zero;
         rotateShip();
     }
 
@@ -31,15 +31,17 @@ public class Rocket : MonoBehaviour
     {
         //Vector3 tempVector = new Vector3(-velocity.x, -velocity.y, 0);
         //gameObject.transform.rotation = Quaternion.LookRotation(tempVector);
-        
+
         //gameObject.transform.rotation. = FromToRotation(Vector3.forward, Vector3.down);
+        Quaternion rotation = new Quaternion();
+        rotation.SetLookRotation(-velocity, Vector3.back);// +acceleration/10);
+        transform.localRotation = rotation;
     }
     // Use this for initialization
     void Start()
     {
         acceleration = new Vector3(0, 0, 0);
         mass = 0.001f;
-        baseRotation = gameObject.transform.rotation;
         startPosition = gameObject.transform.position;
         position = startPosition;
         velocity = startVelocity;

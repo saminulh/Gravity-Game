@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public static bool isLaunched = false;
     public static float timeStep = 0.01f;
     public static Planet selectedPlanet;
-    public static GameObject planetManipulationCanvas, launchCanvas, resetCanvas;
+    public static GameObject planetManipulationCanvas, launchCanvas, resetCanvas, halo;
 
     public float density = 1;
 
@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
             float magnitude = (6.67f * Mathf.Pow(10, -1)) * p.getMass() / (squareDistance);
             Vector3 newAcceleration = p.getPosition() - rocket.getPosition();
             newAcceleration.Normalize();
-            //Debug.Log(newAcceleration);
             newAcceleration *= magnitude;
 
             acceleration += newAcceleration;
@@ -40,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     public static void ActivatePlanetMode(Planet planet)
     {
+        halo.transform.position = planet.getPosition();
+        RenderSettings.haloStrength = planet.getRadius()/1.5f + Planet.haloSize;
         selectedPlanet = planet;
         planetManipulationCanvas.SetActive(true);
         Slider planetSizeSlider = GameObject.Find("Slider").GetComponent<Slider>();
@@ -47,8 +48,9 @@ public class GameManager : MonoBehaviour
             (selectedPlanet.getUpperSize() - selectedPlanet.getLowerSize());
     }
 
-    public void DeactivatePlanetMode()
+    public static void DeactivatePlanetMode()
     {
+        halo.transform.position = new Vector3(0, 0, 200);
         planetManipulationCanvas.SetActive(false);
     }
 
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
         float value = GameObject.Find("Slider").GetComponent<Slider>().normalizedValue;
         float newRadius = (selectedPlanet.getUpperSize() - selectedPlanet.getLowerSize()) * value
             + selectedPlanet.getLowerSize();
+        RenderSettings.haloStrength = newRadius/1.5f + Planet.haloSize;
         selectedPlanet.setRadiusAndMass(newRadius);
 
         //Debug.Log("H");
@@ -93,6 +96,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        halo = GameObject.Find("Halo");
         planetManipulationCanvas = GameObject.Find("PlanetMode");
         launchCanvas = GameObject.Find("Launch");
         resetCanvas = GameObject.Find("Reset");

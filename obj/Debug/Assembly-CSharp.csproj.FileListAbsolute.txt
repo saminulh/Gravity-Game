@@ -60,7 +60,3 @@ C:\Users\Alienwarepc\Unity\Gravity Game\Temp\bin\Debug\UnityEngine.VR.xml
 C:\Users\Alienwarepc\Unity\Gravity Game\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Alienwarepc\Unity\Gravity Game\obj\Debug\Assembly-CSharp.dll
 C:\Users\Alienwarepc\Unity\Gravity Game\obj\Debug\Assembly-CSharp.pdb
-C:\Users\Alienwarepc\Unity\Gravity Game\Temp\bin\Debug\UnityEngine.Advertisements.dll
-C:\Users\Alienwarepc\Unity\Gravity Game\Temp\bin\Debug\UnityEngine.Purchasing.dll
-C:\Users\Alienwarepc\Unity\Gravity Game\Temp\bin\Debug\UnityEngine.Advertisements.xml
-C:\Users\Alienwarepc\Unity\Gravity Game\Temp\bin\Debug\UnityEngine.Purchasing.xml

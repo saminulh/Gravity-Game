@@ -8,6 +8,8 @@ public class Planet : MonoBehaviour
     float defaultRadius, radius, lowerSize, upperSize, density, mass;
     public float lowerSizePercentage = 0.25f, upperSizePercentage = 5;
     bool planetChanged;
+    public static float haloSize = 2.5f;
+    
     public bool endPlanet = false;
 
     void OnMouseUp()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraPanning : MonoBehaviour {
     GameObject rocketGO;
@@ -25,7 +26,9 @@ public class CameraPanning : MonoBehaviour {
 	void Start () {
         rocketGO = GameObject.Find("Rocket");
         lowerY = GameObject.Find(bottomObject).transform.position.y + verticalPadding;
-        upperY = Mathf.Max(GameObject.Find(topObject).transform.position.y - verticalPadding,lowerY);
+        Planet temp = GameObject.Find(topObject).GetComponent<Planet>();
+
+        upperY = Mathf.Max(temp.gameObject.transform.position.y + temp.getUpperSize()/10 - verticalPadding*.75f,lowerY);
         Debug.Log(lowerY);
         setToPosition(0, lowerY);
 	}
@@ -38,7 +41,8 @@ public class CameraPanning : MonoBehaviour {
         {
             if (GameManager.isComputer)
             {
-                if (Input.GetMouseButtonDown(0) && !GameManager.mouseOccupied)
+                Debug.Log(panning);
+                if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
                 {
                     panning = true;
                     mousePosition = Input.mousePosition;
