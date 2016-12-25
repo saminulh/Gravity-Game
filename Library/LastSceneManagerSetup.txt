@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Levels/Sam 1.unity
+- path: Assets/Levels/Matt's Test Level.unity
   isLoaded: 1
   isActive: 1
