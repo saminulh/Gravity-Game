@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
             acceleration += newAcceleration;
         }
-        //Debug.Log(acceleration.y);
+        
         return acceleration;
     }
 
