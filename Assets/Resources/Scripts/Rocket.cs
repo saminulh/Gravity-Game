@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
-    Vector3 position, acceleration, startPosition, velocity;
+    Vector3 acceleration, startPosition, velocity;
     public Vector3 startVelocity, up;
     float mass;
 
     public Vector3 getPosition()
     {
-        return position;
+        return gameObject.transform.position;
+    }
+
+    public void setPosition(Vector3 pos)
+    {
+        gameObject.transform.position = pos;
     }
 
     public float getMass()
@@ -20,8 +25,7 @@ public class Rocket : MonoBehaviour
 
     public void resetPosition()
     {
-        position = startPosition;
-        gameObject.transform.position = position;
+        gameObject.transform.position = startPosition;
         velocity = startVelocity;
         acceleration = Vector3.zero;
         rotateShip();
@@ -29,10 +33,6 @@ public class Rocket : MonoBehaviour
 
     void rotateShip()
     {
-        //Vector3 tempVector = new Vector3(-velocity.x, -velocity.y, 0);
-        //gameObject.transform.rotation = Quaternion.LookRotation(tempVector);
-
-        //gameObject.transform.rotation. = FromToRotation(Vector3.forward, Vector3.down);
         Quaternion rotation = new Quaternion();
         rotation.SetLookRotation(-velocity, Vector3.back);// +acceleration/10);
         transform.localRotation = rotation;
@@ -43,7 +43,6 @@ public class Rocket : MonoBehaviour
         acceleration = new Vector3(0, 0, 0);
         mass = 0.001f;
         startPosition = gameObject.transform.position;
-        position = startPosition;
         velocity = startVelocity;
         rotateShip();
     }
@@ -55,8 +54,7 @@ public class Rocket : MonoBehaviour
         {
             acceleration = GameManager.findAcceleration();
             velocity += acceleration * GameManager.timeStep;
-            position += velocity * GameManager.timeStep;
-            gameObject.transform.position = position;
+            gameObject.transform.position += velocity * GameManager.timeStep; ;
             rotateShip();
         }
     }

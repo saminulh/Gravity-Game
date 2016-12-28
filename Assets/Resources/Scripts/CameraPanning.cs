@@ -41,7 +41,7 @@ public class CameraPanning : MonoBehaviour {
         {
             if (GameManager.isComputer)
             {
-                Debug.Log(panning);
+                //Debug.Log(panning);
                 if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
                 {
                     panning = true;

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Levels/Sam 1.unity
+- path: Assets/Resources/Levels/Sam 1.unity
   isLoaded: 1
   isActive: 1
