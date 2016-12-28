@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static bool isLaunched = false;
     public static float timeStep = 0.01f;
     public static Planet selectedPlanet;
+    public static Wormhole selectedWormhole;
     public static GameObject planetManipulationCanvas, launchCanvas, resetCanvas, halo;
 
     public float density = 1;
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     public static void ActivatePlanetMode(Planet planet)
     {
+        DeactivateWormholeMode();
         halo.transform.position = planet.getPosition();
         RenderSettings.haloStrength = planet.getRadius()/1.5f + Planet.haloSize;
         selectedPlanet = planet;
@@ -52,6 +54,26 @@ public class GameManager : MonoBehaviour
     {
         halo.transform.position = new Vector3(0, 0, 200);
         planetManipulationCanvas.SetActive(false);
+    }
+
+    public static void ActivateWormholeMode(Wormhole wormhole)
+    {
+        DeactivatePlanetMode();
+        RenderSettings.haloStrength = 0.5f;
+        selectedWormhole = wormhole;
+        foreach (Wormhole wh in GameObject.FindObjectsOfType<Wormhole>())
+        {
+            wh.ActivateHalo();
+        }
+    }
+
+    public static void DeactivateWormholeMode()
+    {
+        selectedWormhole = null;
+        foreach (Wormhole wh in GameObject.FindObjectsOfType<Wormhole>())
+        {
+            wh.DeactivateHalo();
+        }
     }
 
     public void setPlanetSize()
@@ -76,6 +98,7 @@ public class GameManager : MonoBehaviour
     {
         isLaunched = true;
         DeactivatePlanetMode();
+        DeactivateWormholeMode();
         launchCanvas.SetActive(false);
         resetCanvas.SetActive(true);
     }
@@ -96,12 +119,13 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        halo = GameObject.Find("Halo");
+        halo = GameObject.Find("/Halo");
         planetManipulationCanvas = GameObject.Find("PlanetMode");
         launchCanvas = GameObject.Find("Launch");
         resetCanvas = GameObject.Find("Reset");
 
         DeactivatePlanetMode();
+        DeactivateWormholeMode();
         resetCanvas.SetActive(false);
     }
 
