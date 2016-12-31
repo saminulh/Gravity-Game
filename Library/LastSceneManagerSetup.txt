@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Resources/Levels/Wormhole 6 (c)(1).unity
+- path: Assets/Resources/Levels/test.unity
   isLoaded: 1
   isActive: 1
