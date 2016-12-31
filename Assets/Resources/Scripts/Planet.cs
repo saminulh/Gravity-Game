@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Planet : MonoBehaviour
 {
@@ -14,9 +15,9 @@ public class Planet : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (!GameManager.isLaunched && !endPlanet)
+        if (!GameManager.isLaunched && !endPlanet && !EventSystem.current.IsPointerOverGameObject())
         {
-            Debug.Log("Pressed");
+            //Debug.Log("Pressed");
             GameManager.ActivatePlanetMode(this);
         }
     }

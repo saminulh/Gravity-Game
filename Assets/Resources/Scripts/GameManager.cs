@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     public static void DeactivateWormholeMode()
     {
         selectedWormhole = null;
-        foreach (Wormhole wh in GameObject.FindObjectsOfType<Wormhole>())
+        foreach (Wormhole wh in FindObjectsOfType<Wormhole>())
         {
             wh.DeactivateHalo();
         }
@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
         resetCanvas = GameObject.Find("Reset");
 
         DeactivatePlanetMode();
-        DeactivateWormholeMode();
+        //DeactivateWormholeMode();
         resetCanvas.SetActive(false);
     }
 

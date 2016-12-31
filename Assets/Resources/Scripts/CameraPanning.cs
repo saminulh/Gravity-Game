@@ -26,10 +26,19 @@ public class CameraPanning : MonoBehaviour {
 	void Start () {
         rocketGO = GameObject.Find("Rocket");
         lowerY = GameObject.Find(bottomObject).transform.position.y + verticalPadding;
-        Planet temp = GameObject.Find(topObject).GetComponent<Planet>();
+        GameObject temp = GameObject.Find(topObject);
 
-        upperY = Mathf.Max(temp.gameObject.transform.position.y + temp.getUpperSize()/10 - verticalPadding*.75f,lowerY);
-        Debug.Log(lowerY);
+        if (temp.GetComponent<Planet>() != null)
+        {
+            upperY = Mathf.Max(temp.transform.position.y + temp.GetComponent<Planet>().getUpperSize() / 10 - verticalPadding * .75f, lowerY);
+        }
+
+        else
+        {
+            upperY =
+            upperY = Mathf.Max(temp.transform.position.y - verticalPadding * .75f, lowerY);
+        }
+        //Debug.Log(lowerY);
         setToPosition(0, lowerY);
 	}
 
