@@ -47,8 +47,6 @@ public class Wormhole : MonoBehaviour {
 
             rotation.SetLookRotation(distVector, Vector3.left);
             pipeline.transform.localRotation = rotation;
-
-            pipeline.transform.parent = gameObject.transform;
         }
     }
 
