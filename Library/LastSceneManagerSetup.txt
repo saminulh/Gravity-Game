@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Resources/Levels/test3.unity
+- path: Assets/Resources/Levels/Tunnel 4 (b).unity
   isLoaded: 1
   isActive: 1
